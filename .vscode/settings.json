@@ -1,0 +1,20 @@
+{
+  "C_Cpp.intelliSenseEngine": "default",
+  "idf.espIdfPathWin": "d:\\Tools\\ESP32\\esp\\v5.3.5\\esp-idf",
+  "idf.pythonInstallPath": "d:\\Tools\\ESP32\\esp\\.espressif\\tools\\idf-python\\3.11.2\\python.exe",
+  "idf.openOcdConfigs": [
+    "board/esp32s3-builtin.cfg"
+  ],
+  "idf.toolsPathWin": "d:\\Tools\\ESP32\\esp\\.espressif",
+  "idf.customExtraVars": {
+    "IDF_TARGET": "esp32s3"
+  },
+  "clangd.path": "d:\\Tools\\ESP32\\esp\\.espressif\\tools\\esp-clang\\16.0.1-fe4f10a809\\esp-clang\\bin\\clangd.exe",
+  "clangd.arguments": [
+    "--background-index",
+    "--query-driver=**",
+    "--compile-commands-dir=d:\\Tools\\ESP32\\Project\\NFC_Run\\build"
+  ],
+  "idf.flashType": "UART",
+  "idf.portWin": "COM7"
+}
