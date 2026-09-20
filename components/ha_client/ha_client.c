@@ -4,6 +4,8 @@
 #include "freertos/task.h"
 #include "esp_http_client.h"
 #include "esp_log.h"
+#include "cJSON.h"
+#include "status_led.h"
 
 // TODO: 替换为你的 HA 服务器实际地址和长期访问令牌 (Long-Lived Access Token)
 #define HA_URL "http://192.168.1.4:8123/api/events/nfc_scanned"
@@ -81,4 +83,30 @@ void ha_client_post_json(const char *json_payload)
 
     // 创建后台任务执行网络请求，分配 4KB 栈空间
     xTaskCreate(http_post_task, "ha_post_task", 4096, payload_copy, 4, NULL);
+}
+
+// 统一数据上报函数
+void report_token_to_ha(const char *token)
+{
+    if (token == NULL || strlen(token) == 0)
+    {
+        return;
+    }
+
+    cJSON *root = cJSON_CreateObject();
+    cJSON_AddStringToObject(root, "device", "esp32s3_n8r2");
+    cJSON_AddStringToObject(root, "token", token);
+    char *json_string = cJSON_PrintUnformatted(root);
+
+    ESP_LOGI(TAG, "==== Auth Success ====");
+    ESP_LOGI(TAG, "JSON: %s", json_string);
+
+    status_led_set(SYS_STATE_WIFI_OK);
+    ha_client_post_json(json_string);
+
+    cJSON_free(json_string);
+    cJSON_Delete(root);
+
+    vTaskDelay(pdMS_TO_TICKS(1500));
+    status_led_set(SYS_STATE_INIT);
 }

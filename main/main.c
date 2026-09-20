@@ -14,6 +14,7 @@
 #include "udp_logger.h"
 #include "status_led.h"
 #include "pn532_reader.h"
+#include "button_reader.h"
 
 #define WIFI_SSID "Smart"
 #define WIFI_PASS "88888888"
@@ -129,4 +130,5 @@ void app_main(void)
     start_webserver();
 
     pn532_init_and_start();
+    button_reader_init_and_start();
 }
