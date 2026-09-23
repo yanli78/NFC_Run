@@ -20,12 +20,12 @@ typedef struct
 
 // 配置 6 个按键引脚及对应的字符
 static button_dev_t btn_list[] = {
-    {.pin = GPIO_NUM_4, .token = "K1", .last_level = 1, .counter = 0},
+    {.pin = GPIO_NUM_4, .token = "K3", .last_level = 1, .counter = 0},
     {.pin = GPIO_NUM_13, .token = "K2", .last_level = 1, .counter = 0},
-    {.pin = GPIO_NUM_14, .token = "K3", .last_level = 1, .counter = 0},
-    {.pin = GPIO_NUM_16, .token = "K4", .last_level = 1, .counter = 0},
+    {.pin = GPIO_NUM_14, .token = "K1", .last_level = 1, .counter = 0},
+    {.pin = GPIO_NUM_16, .token = "K6", .last_level = 1, .counter = 0},
     {.pin = GPIO_NUM_17, .token = "K5", .last_level = 1, .counter = 0},
-    {.pin = GPIO_NUM_18, .token = "K6", .last_level = 1, .counter = 0},
+    {.pin = GPIO_NUM_18, .token = "K4", .last_level = 1, .counter = 0},
 };
 
 #define BTN_COUNT (sizeof(btn_list) / sizeof(btn_list[0]))
